@@ -1,18 +1,20 @@
 <div align="center" style="border-bottom: none">
     <h1>
-        <img src="docs/6.png" width="400" style="border-radius: 10px;" />
+        <!-- Optional: Replace with a relevant image if you have one -->
+        <!-- <img src="docs/6.png" width="400" style="border-radius: 10px;" /> -->
         <br>
-        Meetily - AI-Powered Meeting Assistant
+        Migros Bank & Universität St. Gallen: Automatic Meeting Transcription
     </h1>
     <br>
-    <a href="https://github.com/Zackriya-Solutions/meeting-minutes/releases/tag/v0.0.3"><img src="https://img.shields.io/badge/Pre_Release-v0.0.3-brightgreen" alt="Pre-Release"></a>
-    <a href="https://github.com/Zackriya-Solutions/meeting-minutes/releases/tag/v0.0.3"><img src="https://img.shields.io/badge/Stars-1000+-red" alt="Stars"></a>
-    <a href="https://github.com/Zackriya-Solutions/meeting-minutes/releases/tag/v0.0.3"><img src="https://img.shields.io/badge/License-MIT-blue" alt="License"></a>
-    <a href="https://github.com/Zackriya-Solutions/meeting-minutes/releases/tag/v0.0.3"><img src="https://img.shields.io/badge/Supported_OS-macOS,_Windows-yellow" alt="Supported OS"></a>
+    <!-- Optional: Badges anpassen oder entfernen -->
+    <!-- <a href="https://github.com/Zackriya-Solutions/meeting-minutes/releases/tag/v0.0.3"><img src="https://img.shields.io/badge/Pre_Release-v0.0.3-brightgreen" alt="Pre-Release"></a> -->
+    <!-- <a href="https://github.com/Zackriya-Solutions/meeting-minutes/releases/tag/v0.0.3"><img src="https://img.shields.io/badge/Stars-1000+-red" alt="Stars"></a> -->
+    <!-- <a href="https://github.com/Zackriya-Solutions/meeting-minutes/releases/tag/v0.0.3"><img src="https://img.shields.io/badge/License-MIT-blue" alt="License"></a> -->
+    <!-- <a href="https://github.com/Zackriya-Solutions/meeting-minutes/releases/tag/v0.0.3"><img src="https://img.shields.io/badge/Supported_OS-macOS,_Windows-yellow" alt="Supported OS"></a> -->
     <br>
     <h3>
     <br>
-    Open source Ai Assistant for taking meeting notes
+    Ein KI-gestützter Meeting-Assistent für automatische Transkription und Zusammenfassung
     </h3>
     <p align="center">
     <a href="https://meetily.zackriya.com"><b>Website</b></a> •
@@ -28,54 +30,67 @@
 <p align="center">
     <img src="docs/demo_small.gif" width="650" alt="Meetily Demo" />
     <br>
-    <a href="https://youtu.be/5k_Q5Wlahuk">View full Demo Video</a>
+    <!-- <a href="https://youtu.be/5k_Q5Wlahuk">View full Demo Video</a> -->
 </p>
 
 </div>
 
+## Projektkontext
 
-## Overview
+Dieses Projekt entstand im Rahmen einer Lehrveranstaltung am **Institut für Wirtschaftsinformatik der Universität St. Gallen** in Zusammenarbeit mit der **Migros Bank**. Ziel war die Entwicklung eines Proof-of-Concepts für eine automatische Meeting-Transkriptionslösung.
 
-An AI-powered meeting assistant that captures live meeting audio, transcribes it in real-time, and generates summaries while ensuring user privacy. Perfect for teams who want to focus on discussions while automatically capturing and organizing meeting content.
+Es basiert auf dem Open-Source-Projekt [Meetily - AI-Powered Meeting Assistant](https://github.com/Zackriya-Solutions/meeting-minutes) von Zackriya Solutions, wurde jedoch für diesen spezifischen Anwendungsfall angepasst und erweitert.
 
-### Why?
+## Herausforderung & Ansatz (Challenge & Approach)
 
-While there are many meeting transcription tools available, this solution stands out by offering:
-- **Privacy First**: All processing happens locally on your device
-- **Cost Effective**: Uses open-source AI models instead of expensive APIs
-- **Flexible**: Works offline, supports multiple meeting platforms
-- **Customizable**: Self-host and modify for your specific needs
-- **Intelligent**: Built-in knowledge graph for semantic search across meetings
+**Challenge:** «How to enhance and automate meeting transcription and summarization processes?»
 
-## Features
+**Approach:**
 
-✅ Modern, responsive UI with real-time updates
+*   **Transcription & Speaker Differentiation:**
+    *   Entwicklung einer KI-basierten Lösung zur Transkription von Meeting-Gesprächen (on-site und online).
+    *   Automatische Differenzierung verschiedener Sprecher basierend auf Stimmerkennung (In Arbeit).
+    *   Generierung von automatisierten Meeting-Zusammenfassungen zur Verbesserung der Informationszugänglichkeit.
+*   **Proof-of-Concept:**
+    *   Nutzung von Generativer KI (Whisper oder ähnlich) für hohe Transkriptionsgenauigkeit.
+    *   Implementierung als Cloud-basierte Lösung mit Option für On-Premise-Deployment zur Erfüllung von Sicherheits- und Compliance-Anforderungen.
+    *   Design und Evaluierung eines Prototyps für automatisierte Meeting-Transkription und -Zusammenfassung.
+    *   Testen verschiedener KI-Modelle für Sprechererkennung und Zusammenfassung.
 
-✅ Real-time audio capture (microphone + system audio)
+## Aktueller Stand & Anpassungen
 
-✅ Live transcription using Whisper.cpp
+Dieser Prototyp implementiert folgende Kernfunktionen:
 
-🚧 Speaker diarization
+*   ✅ **Echtzeit-Audioaufnahme:** Erfasst Mikrofon- und Systemaudio.
+*   ✅ **Live-Transkription:** Nutzt Whisper.cpp für die lokale Transkription.
+    *   ✅ **Erweiterung:** Integration eines Whisper-Modells, das für **Schweizerdeutsch** trainiert wurde.
+*   ✅ **Lokale Verarbeitung:** Gewährleistet Datenschutz, da keine Daten an externe Server gesendet werden.
+*   ✅ **Angepasstes Frontend:** Die Benutzeroberfläche wurde angepasst.
+*   ✅ **Zusammenfassungen:** Generiert automatische Zusammenfassungen mittels LLMs.
+    *   ⚠️ **Hinweis:** Die Zusammenfassung erfolgt aktuell über eine **API (Cloud)**, da die benötigte Rechenleistung für grosse Modelle auf lokalen Geräten oft nicht ausreicht. Eine Ausführung auf einer **Private Cloud** wäre alternativ möglich.
+*   ✅ **Plattformunterstützung:** Läuft unter macOS und Windows.
 
-✅ Local processing for privacy
+### Laufende Arbeiten & Nächste Schritte
 
-✅ Packaged the app for macOS and Windows
+*   🚧 **Sprecherunterscheidung (Speaker Diarization):** Aktive Entwicklung zur automatischen Identifizierung verschiedener Sprecher im Transkript.
+*   🚧 **Export-Funktionen:** Hinzufügen von Exportoptionen für Transkripte und Zusammenfassungen (z.B. Markdown, PDF).
+*   Weitere Verbesserungen basierend auf dem ursprünglichen Projekt (siehe unten).
 
-🚧 Export to Markdown/PDF
+## Basierend auf Meetily (Original Projektinformation)
 
+Die folgenden Abschnitte beschreiben die Architektur, Features und Setup-Anweisungen des ursprünglichen "Meetily"-Projekts, auf dem diese Arbeit basiert.
 
 > **Note**: We have a Rust-based implementation that explores better performance and native integration. It currently implements:
 > - ✅ Real-time audio capture from both microphone and system audio
 > - ✅ Live transcription using locally-running Whisper
 > - ✅ Speaker diarization
 > - ✅ Rich text editor for notes
-> 
-We are currently working on:
+>
+> We are currently working on:
 > - ✅ Export to Markdown/PDF
 > - ✅ Export to HTML
 
-
-## Release 0.0.3
+## Release 0.0.3 (Original Project)
 
 A new release is available!
 
@@ -91,19 +106,19 @@ Please check out the release [here](https://github.com/Zackriya-Solutions/meetin
 - Better backend app build process
 - Improved documentation
 
-### What would be next?
+### What would be next? (Original Project)
 - Database connection to save meeting minutes
 - Improve summarization quality for smaller LLM models
 - Add download options for meeting transcriptions 
 - Add download option for summary
 
-### Known issues
+### Known issues (Original Project)
 - Smaller LLMs can hallucinate, making summarization quality poor; Please use model above 32B parameter size
 - Backend build process requires CMake, C++ compiler, etc. Making it harder to build
 - Backend build process requires Python 3.10 or newer
 - Frontend build process requires Node.js
 
-## LLM Integration
+## LLM Integration (Original Project Configuration)
 
 The backend supports multiple LLM providers through a unified interface. Current implementations include:
 
@@ -123,7 +138,7 @@ GROQ_API_KEY=your_key_here
 
 ```
 
-## System Architecture
+## System Architecture (Original Project)
 
 ![High Level Architecture](docs/HighLevel.jpg)
 
@@ -163,7 +178,7 @@ GROQ_API_KEY=your_key_here
   - Transcript workers
   - LLM inference
 
-## Prerequisites
+## Prerequisites (Original Project)
 
 - Node.js 18+
 - Python 3.10+
@@ -172,7 +187,7 @@ GROQ_API_KEY=your_key_here
 - Cmake 3.22+ (for building the frontend)
 - For Windows: Visual Studio Build Tools with C++ development workload
 
-## Setup Instructions
+## Setup Instructions (Original Project)
 
 ### 1. Frontend Setup
 
@@ -269,15 +284,26 @@ chmod +x build_whisper.sh
 - Use type hints in Python code
 - Follow ESLint configuration for JavaScript/TypeScript
 
-## Contributing
+## Contributing (Original Project)
 
 1. Fork the repository
 2. Create a feature branch
 3. Submit a pull request
 
-## License
+## License (Original Project)
 
-MIT License - Feel free to use this project for your own purposes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgements (Original Project)
+
+-   Whisper.cpp for the transcription engine
+-   Tauri for the cross-platform desktop framework
+-   Next.js for the frontend framework
+-   ChromaDB for the vector store
+-   FastAPI for the backend framework
+
+---
+*Dieses README wurde angepasst, um den Kontext des Studentenprojekts der Universität St. Gallen und der Migros Bank widerzuspiegeln.*
 
 ## Introducing Subscription
 
