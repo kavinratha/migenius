@@ -16,15 +16,16 @@
     <br>
     Ein KI-gestützter Meeting-Assistent für automatische Transkription und Zusammenfassung
     </h3>
+    <!-- Entfernte Links
     <p align="center">
     <a href="https://meetily.zackriya.com"><b>Website</b></a> •
     <a href="https://in.linkedin.com/company/zackriya-solutions"><b>Author</b></a>
     •
     <a href="https://discord.gg/crRymMQBFH"><b>Discord Channel</b></a>
 </p>
+    -->
     <p align="center">
-    
- An AI-Powered Meeting Assistant that captures live meeting audio, transcribes it in real-time, and generates summaries while ensuring user privacy. Perfect for teams who want to focus on discussions while automatically capturing and organizing meeting content without the need for external servers or complex infrastructure. 
+    Ein KI-gestützter Meeting-Assistent, der Audio von Besprechungen live aufnimmt, in Echtzeit transkribiert und Zusammenfassungen erstellt. Dies spart Bankberatern wertvolle Zeit und erhöht die Transparenz von Beratungsgesprächen, da Diskussionen automatisch erfasst und organisiert werden, ohne dass externe Server benötigt werden.
 </p>
 
 <p align="center">
