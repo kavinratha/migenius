@@ -37,7 +37,7 @@ interface OllamaModel {
 export default function Home() {
   const [isRecording, setIsRecording] = useState(false);
   const [transcripts, setTranscripts] = useState<Transcript[]>([]);
-  const [showSummary, setShowSummary] = useState(false);
+  const [showSummary, setShowSummary] = useState(true);
   const [summaryStatus, setSummaryStatus] = useState<SummaryStatus>('idle');
   const [barHeights, setBarHeights] = useState(['58%', '76%', '58%']);
   const [meetingTitle, setMeetingTitle] = useState('Neues Gespräch');
@@ -651,12 +651,17 @@ export default function Home() {
     navigator.clipboard.writeText(fullTranscript);
   }, [transcripts]);
 
-  const handleGenerateSummary = useCallback(async () => {
-    if (!transcripts.length) {
-      console.log('No transcripts available for summary');
+  const handleGenerateSummary = async () => {
+    if (transcripts.length === 0) {
+      setSummaryError("Es muss zuerst eine Transkription vorhanden sein, um eine Zusammenfassung zu generieren.");
+      setSummaryStatus('error');
       return;
     }
-    
+
+    setSummaryError(null);
+    setSummaryStatus('loading');
+    setShowSummary(true);
+
     try {
       await generateAISummary();
     } catch (error) {
@@ -666,8 +671,9 @@ export default function Home() {
       } else {
         setSummaryError('Failed to generate summary: Unknown error');
       }
+      setSummaryStatus('error');
     }
-  }, [transcripts, generateAISummary]);
+  };
 
   const isSummaryLoading = summaryStatus === 'processing' || summaryStatus === 'summarizing' || summaryStatus === 'regenerating';
 
@@ -709,23 +715,21 @@ export default function Home() {
                   <>
                     <button
                       onClick={handleGenerateSummary}
-                      disabled={summaryStatus === 'processing'}
+                      disabled={summaryStatus === 'loading' || transcripts.length === 0}
                       className={`px-3 py-2 border rounded-md transition-all duration-200 inline-flex items-center gap-2 shadow-sm ${
-                        summaryStatus === 'processing'
-                          ? 'bg-yellow-50 border-yellow-200 text-yellow-700'
-                          : transcripts.length === 0
+                        summaryStatus === 'loading' || transcripts.length === 0
                           ? 'bg-gray-50 border-gray-200 text-gray-400 cursor-not-allowed'
                           : 'bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:border-green-300 active:bg-green-200'
                       }`}
                       title={
-                        summaryStatus === 'processing'
+                        summaryStatus === 'loading'
                           ? 'Zusammenfassung wird erstellt...'
                           : transcripts.length === 0
                           ? 'Kein Transkript verfügbar'
                           : 'KI-Zusammenfassung erstellen'
                       }
                     >
-                      {summaryStatus === 'processing' ? (
+                      {summaryStatus === 'loading' ? (
                         <>
                           <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
