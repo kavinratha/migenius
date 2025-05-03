@@ -538,7 +538,7 @@ export default function Home() {
       return;
     }
 
-    setSummaryStatus('regenerating');
+    setSummaryStatus('processing');
     setSummaryError(null);
 
     try {
@@ -659,7 +659,7 @@ export default function Home() {
     }
 
     setSummaryError(null);
-    setSummaryStatus('loading');
+    setSummaryStatus('processing');
     setShowSummary(true);
 
     try {
@@ -676,6 +676,87 @@ export default function Home() {
   };
 
   const isSummaryLoading = summaryStatus === 'processing' || summaryStatus === 'summarizing' || summaryStatus === 'regenerating';
+
+  // State for Mock Sentiment Analysis
+  const [mockSentiment, setMockSentiment] = useState({
+    label: 'Neutral',
+    color: 'gray',
+    suggestions: [
+      'Aktives Zuhören, offene Fragen stellen.',
+      'Kundenbedürfnisse weiter explorieren.'
+    ]
+  });
+
+  // State for Mock CRM Info
+  const [crmIdInput, setCrmIdInput] = useState('');
+  const [showCrmData, setShowCrmData] = useState(false);
+
+  useEffect(() => {
+    // Cycle through mock sentiments every 10 seconds
+    const sentiments = [
+      {
+        label: 'Positiv',
+        color: 'green',
+        suggestions: [
+          'Kunde ist zufrieden, Gespräch vertiefen.',
+          'Positive Stimmung nutzen, um Zusatzprodukte anzusprechen.',
+          'Zufriedenheit bestätigen und Engagement loben.'
+        ]
+      },
+      {
+        label: 'Neutral',
+        color: 'gray',
+        suggestions: [
+          'Aktives Zuhören, offene Fragen stellen.',
+          'Kundenbedürfnisse weiter explorieren.',
+          'Auf nonverbale Signale achten.'
+        ]
+      },
+      {
+        label: 'Negativ',
+        color: 'red',
+        suggestions: [
+          'Empathie zeigen, Bedenken ernst nehmen.',
+          'Ursache für Unzufriedenheit klären.',
+          'Lösungsorientiert argumentieren, Deeskalation anstreben.'
+        ]
+      },
+    ];
+    let currentIndex = 1; // Start with Neutral
+
+    // Deklariere intervalId außerhalb des setIntervalls, aber innerhalb des useEffects
+    let intervalId: NodeJS.Timeout | null = null; 
+
+    intervalId = setInterval(() => {
+      currentIndex = (currentIndex + 1) % sentiments.length;
+      setMockSentiment(sentiments[currentIndex]);
+    }, 10000);
+
+    // Cleanup interval on component unmount
+    return () => {
+      // Überprüfe, ob intervalId gesetzt ist, bevor clearInterval aufgerufen wird
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, []); // Leeres Abhängigkeitsarray stellt sicher, dass dies nur beim Mount ausgeführt wird
+
+  // Handler for CRM ID Input Change
+  const handleCrmIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setCrmIdInput(value);
+    // Reset data visibility if input is cleared
+    if (value.trim() === '') {
+        setShowCrmData(false);
+    }
+  };
+
+  // Handler for CRM ID KeyDown (Enter)
+  const handleCrmKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && crmIdInput.trim() !== '') {
+      setShowCrmData(true);
+    }
+  };
 
   return (
     <div className="flex flex-col h-screen bg-gray-50">
@@ -715,21 +796,21 @@ export default function Home() {
                   <>
                     <button
                       onClick={handleGenerateSummary}
-                      disabled={summaryStatus === 'loading' || transcripts.length === 0}
+                      disabled={summaryStatus === 'processing' || transcripts.length === 0}
                       className={`px-3 py-2 border rounded-md transition-all duration-200 inline-flex items-center gap-2 shadow-sm ${
-                        summaryStatus === 'loading' || transcripts.length === 0
+                        summaryStatus === 'processing' || transcripts.length === 0
                           ? 'bg-gray-50 border-gray-200 text-gray-400 cursor-not-allowed'
                           : 'bg-green-50 border-green-200 text-green-700 hover:bg-green-100 hover:border-green-300 active:bg-green-200'
                       }`}
                       title={
-                        summaryStatus === 'loading'
+                        summaryStatus === 'processing'
                           ? 'Zusammenfassung wird erstellt...'
                           : transcripts.length === 0
                           ? 'Kein Transkript verfügbar'
                           : 'KI-Zusammenfassung erstellen'
                       }
                     >
-                      {summaryStatus === 'loading' ? (
+                      {summaryStatus === 'processing' ? (
                         <>
                           <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
@@ -872,82 +953,151 @@ export default function Home() {
           )}
         </div>
 
-        {/* Right side - AI Summary */}
-        <div className="flex-1 overflow-y-auto bg-white">
-          {isSummaryLoading ? (
-            <div className="flex items-center justify-center h-full">
-              <div className="text-center">
-                <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
-                <p className="text-gray-600">KI-Zusammenfassung wird erstellt...</p>
+        {/* Right side container for Summary and Sentiment */}
+        <div className="flex flex-1 overflow-hidden">
+          {/* AI Summary section */}
+          <div className="flex-1 overflow-y-auto bg-white p-6 border-r border-gray-200">
+            {isSummaryLoading ? (
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center">
+                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
+                  <p className="text-gray-600">KI-Zusammenfassung wird erstellt...</p>
+                </div>
               </div>
-            </div>
-          ) : showSummary && (
-            <div className="max-w-4xl mx-auto p-6">
-              {summaryResponse && (
-                <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 max-h-1/3 overflow-y-auto">
-                  <h3 className="text-lg font-semibold mb-2">Besprechungszusammenfassung</h3>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white p-4 rounded-lg shadow-sm">
-                      <h4 className="font-medium mb-1">Wichtigste Punkte</h4>
-                      <ul className="list-disc pl-4">
-                        {summaryResponse.summary.key_points.blocks.map((block, i) => (
-                          <li key={i} className="text-sm">{block.content}</li>
-                        ))}
-                      </ul>
+            ) : showSummary && (
+              <div className="max-w-4xl mx-auto p-6">
+                {summaryResponse && (
+                  <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 max-h-1/3 overflow-y-auto">
+                    <h3 className="text-lg font-semibold mb-2">Besprechungszusammenfassung</h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-white p-4 rounded-lg shadow-sm">
+                        <h4 className="font-medium mb-1">Wichtigste Punkte</h4>
+                        <ul className="list-disc pl-4">
+                          {summaryResponse.summary.key_points.blocks.map((block, i) => (
+                            <li key={i} className="text-sm">{block.content}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
+                        <h4 className="font-medium mb-1">Nächste Schritte</h4>
+                        <ul className="list-disc pl-4">
+                          {summaryResponse.summary.action_items.blocks.map((block, i) => (
+                            <li key={i} className="text-sm">{block.content}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
+                        <h4 className="font-medium mb-1">Entscheidungen</h4>
+                        <ul className="list-disc pl-4">
+                          {summaryResponse.summary.decisions.blocks.map((block, i) => (
+                            <li key={i} className="text-sm">{block.content}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
+                        <h4 className="font-medium mb-1">Hauptthemen</h4>
+                        <ul className="list-disc pl-4">
+                          {summaryResponse.summary.main_topics.blocks.map((block, i) => (
+                            <li key={i} className="text-sm">{block.content}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
-                      <h4 className="font-medium mb-1">Nächste Schritte</h4>
-                      <ul className="list-disc pl-4">
-                        {summaryResponse.summary.action_items.blocks.map((block, i) => (
-                          <li key={i} className="text-sm">{block.content}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
-                      <h4 className="font-medium mb-1">Entscheidungen</h4>
-                      <ul className="list-disc pl-4">
-                        {summaryResponse.summary.decisions.blocks.map((block, i) => (
-                          <li key={i} className="text-sm">{block.content}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
-                      <h4 className="font-medium mb-1">Hauptthemen</h4>
-                      <ul className="list-disc pl-4">
-                        {summaryResponse.summary.main_topics.blocks.map((block, i) => (
-                          <li key={i} className="text-sm">{block.content}</li>
-                        ))}
-                      </ul>
-                    </div>
+                    {summaryResponse.raw_summary ? (
+                      <div className="mt-4">
+                        <h4 className="font-medium mb-1">Vollständige Zusammenfassung</h4>
+                        <p className="text-sm whitespace-pre-wrap">{summaryResponse.raw_summary}</p>
+                      </div>
+                    ) : null}
                   </div>
-                  {summaryResponse.raw_summary ? (
-                    <div className="mt-4">
-                      <h4 className="font-medium mb-1">Vollständige Zusammenfassung</h4>
-                      <p className="text-sm whitespace-pre-wrap">{summaryResponse.raw_summary}</p>
-                    </div>
-                  ) : null}
+                )}
+                <div className="flex-1 overflow-y-auto p-4">
+                  <AISummary 
+                    summary={aiSummary} 
+                    status={summaryStatus} 
+                    error={summaryError}
+                    onSummaryChange={(newSummary) => setAiSummary(newSummary)}
+                    onRegenerateSummary={handleRegenerateSummary}
+                  />
                 </div>
-              )}
-              <div className="flex-1 overflow-y-auto p-4">
-                <AISummary 
-                  summary={aiSummary} 
-                  status={summaryStatus} 
-                  error={summaryError}
-                  onSummaryChange={(newSummary) => setAiSummary(newSummary)}
-                  onRegenerateSummary={handleRegenerateSummary}
-                />
+                {summaryStatus !== 'idle' && (
+                  <div className={`mt-4 p-4 rounded-lg ${
+                    summaryStatus === 'error' ? 'bg-red-100 text-red-700' :
+                    summaryStatus === 'completed' ? 'bg-green-100 text-green-700' :
+                    'bg-blue-100 text-blue-700'
+                  }`}>
+                    <p className="text-sm font-medium">{getSummaryStatusMessage(summaryStatus)}</p>
+                  </div>
+                )}
               </div>
-              {summaryStatus !== 'idle' && (
-                <div className={`mt-4 p-4 rounded-lg ${
-                  summaryStatus === 'error' ? 'bg-red-100 text-red-700' :
-                  summaryStatus === 'completed' ? 'bg-green-100 text-green-700' :
-                  'bg-blue-100 text-blue-700'
-                }`}>
-                  <p className="text-sm font-medium">{getSummaryStatusMessage(summaryStatus)}</p>
+            )}
+          </div>
+
+          {/* NEW: Mock Sentiment Analysis section */}
+          <div className="w-1/4 min-w-[280px] flex flex-col bg-gray-50">
+             {/* Sentiment Analysis Div (keep its content, maybe adjust padding/margin) */}
+             <div className="overflow-y-auto p-6">
+                <h3 className="text-lg font-semibold mb-4 text-gray-800">Sentimentanalyse (Echtzeit)</h3>
+                {/* Sentiment Indicator */}
+                <div className={`border border-${mockSentiment.color}-300 bg-${mockSentiment.color}-50 rounded-lg p-4 mb-6 shadow-sm`}>
+                  <div className="flex items-center mb-2">
+                    <span className={`w-3 h-3 rounded-full bg-${mockSentiment.color}-500 mr-2`}></span>
+                    <div className={`text-lg font-medium text-${mockSentiment.color}-800`}>{mockSentiment.label}</div>
+                  </div>
+                  <div className={`w-full bg-${mockSentiment.color}-200 rounded-full h-2.5`}>
+                     {/* Simple mock progress/intensity bar */}
+                     <div className={`bg-${mockSentiment.color}-500 h-2.5 rounded-full`} style={{ width: mockSentiment.label === 'Positiv' ? '75%' : mockSentiment.label === 'Neutral' ? '50%' : '25%' }}></div>
+                  </div>
                 </div>
-              )}
-            </div>
-          )}
+
+                {/* Suggestions Area */}
+                <div className="flex-1 space-y-3">
+                  <h4 className="text-sm font-semibold text-gray-600 mb-2">Vorschläge für Sie:</h4>
+                  {mockSentiment.suggestions.map((suggestion, index) => (
+                    <div key={index} className="flex items-start p-3 bg-white rounded-md border border-gray-200 text-sm text-gray-700 shadow-xs">
+                      <svg xmlns="http://www.w3.org/2000/svg" className={`flex-shrink-0 h-4 w-4 mr-2 text-${mockSentiment.color}-500`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                      </svg>
+                      {suggestion}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Disclaimer */}
+                <p className="text-xs text-gray-500 mt-6 text-center">(Mock-Daten - keine echte Analyse)</p>
+             </div>
+
+             {/* NEW: Mock CRM Info section */}
+             <div className="border-t border-gray-200 p-6 mt-auto bg-white">
+                 <h3 className="text-lg font-semibold mb-4 text-gray-800">Kundeninfo (Finnova CRM)</h3>
+                 <div className="mb-4">
+                     <label htmlFor="crmId" className="block text-sm font-medium text-gray-700 mb-1">
+                         CRM-Nummer
+                     </label>
+                     <input
+                         type="text"
+                         id="crmId"
+                         value={crmIdInput}
+                         onChange={handleCrmIdChange}
+                         onKeyDown={handleCrmKeyDown}
+                         placeholder="Nummer eingeben & Enter..."
+                         className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500"
+                     />
+                 </div>
+
+                 {showCrmData && (
+                     <div className="space-y-2 p-4 bg-white rounded-md border border-gray-200 shadow-sm text-sm">
+                         <h4 className="text-sm font-semibold text-gray-600 mb-2">Kundendetails (Mock-Daten):</h4>
+                         <div><span className="font-medium text-gray-500 w-28 inline-block">Name:</span> Max Mustermann</div>
+                         <div><span className="font-medium text-gray-500 w-28 inline-block">Kundennr:</span> {crmIdInput || '12345'}</div>
+                         <div><span className="font-medium text-gray-500 w-28 inline-block">Letzter Kontakt:</span> 15.03.2024</div>
+                         <div><span className="font-medium text-gray-500 w-28 inline-block">Segment:</span> Privatkunde Plus</div>
+                         <div><span className="font-medium text-gray-500 w-28 inline-block">Hauptprodukt:</span> Hypothek XYZ</div>
+                         <div><span className="font-medium text-gray-500 w-28 inline-block">Potenzial:</span> Hoch (Anlage)</div>
+                     </div>
+                 )}
+             </div>
+           </div>
         </div>
       </div>
     </div>
