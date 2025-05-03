@@ -29,7 +29,7 @@
 </p>
 
 <p align="center">
-    <img src="docs/demo_small.gif" width="650" alt="Meetily Demo" />
+    <img src="docs/Dashboard%20Migenius.png" width="650" alt="Migenius Dashboard Screenshot" />
     <br>
     <!-- <a href="https://youtu.be/5k_Q5Wlahuk">View full Demo Video</a> -->
 </p>
