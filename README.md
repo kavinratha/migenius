@@ -3,7 +3,7 @@
         <!-- Optional: Replace with a relevant image if you have one -->
         <!-- <img src="docs/6.png" width="400" style="border-radius: 10px;" /> -->
         <br>
-        Migros Bank & Universität St. Gallen: Automatic Meeting Transcription
+        MiGenius: Echtzeit-Transkription und intelligente Zusammenfassung von Meetings
     </h1>
     <br>
     <!-- Optional: Badges anpassen oder entfernen -->
