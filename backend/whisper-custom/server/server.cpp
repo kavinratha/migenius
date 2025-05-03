@@ -64,7 +64,7 @@ struct whisper_params {
     float no_speech_thold = 0.6f;
 
     bool debug_mode      = false;
-    bool translate       = false;
+    bool translate       = true;
     bool detect_language = false;
     bool diarize         = true;
     bool tinydiarize     = false;
@@ -79,7 +79,7 @@ struct whisper_params {
     bool flash_attn      = false;
     bool suppress_nst    = false;
 
-    std::string language        = "en";
+    std::string language        = "de";
     std::string prompt          = "";
     std::string font_path       = "/System/Library/Fonts/Supplemental/Courier New Bold.ttf";
     std::string model           = "models/ggml-base.en.bin";

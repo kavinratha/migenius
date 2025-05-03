@@ -40,13 +40,13 @@ export default function Home() {
   const [showSummary, setShowSummary] = useState(false);
   const [summaryStatus, setSummaryStatus] = useState<SummaryStatus>('idle');
   const [barHeights, setBarHeights] = useState(['58%', '76%', '58%']);
-  const [meetingTitle, setMeetingTitle] = useState('New Call');
+  const [meetingTitle, setMeetingTitle] = useState('Neues Gespräch');
   const [isEditingTitle, setIsEditingTitle] = useState(false);
   const [aiSummary, setAiSummary] = useState<Summary | null>({
-    key_points: { title: "Key Points", blocks: [] },
-    action_items: { title: "Action Items", blocks: [] },
-    decisions: { title: "Decisions", blocks: [] },
-    main_topics: { title: "Main Topics", blocks: [] }
+    Agenda: { title: "Tagesordnung", blocks: [] },
+    Decisions: { title: "Entscheidungen", blocks: [] },
+    ActionItems: { title: "Nächste Schritte", blocks: [] },
+    ClosingRemarks: { title: "Abschließende Bemerkungen", blocks: [] }
   });
   const [summaryResponse, setSummaryResponse] = useState<SummaryResponse | null>(null);
 
@@ -464,17 +464,17 @@ export default function Home() {
   const getSummaryStatusMessage = (status: SummaryStatus) => {
     switch (status) {
       case 'idle':
-        return 'Ready to generate summary';
+        return 'Bereit für Zusammenfassung';
       case 'processing':
-        return 'Processing transcript...';
+        return 'Transkript wird verarbeitet...';
       case 'summarizing':
-        return 'Generating AI summary...';
+        return 'KI-Zusammenfassung wird erstellt...';
       case 'regenerating':
-        return 'Regenerating AI summary...';
+        return 'KI-Zusammenfassung wird neu erstellt...';
       case 'completed':
-        return 'Summary generated successfully!';
+        return 'Zusammenfassung erfolgreich erstellt!';
       case 'error':
-        return summaryError || 'An error occurred';
+        return summaryError || 'Ein Fehler ist aufgetreten';
       default:
         return '';
     }
@@ -697,13 +697,13 @@ export default function Home() {
                       ? 'bg-gray-50 border-gray-200 text-gray-400 cursor-not-allowed'
                       : 'bg-blue-50 border-blue-200 text-blue-700 hover:bg-blue-100 hover:border-blue-300 active:bg-blue-200'
                   }`}
-                  title={transcripts.length === 0 ? 'No transcript available' : 'Copy Transcript'}
+                  title={transcripts.length === 0 ? 'Kein Transkript verfügbar' : 'Transkript kopieren'}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V7.5l-3.75-3.612z" />
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15 3v3.75a.75.75 0 0 0 .75.75H18" />
                   </svg>
-                  <span className="text-sm">Copy Transcript</span>
+                  <span className="text-sm">Transkript kopieren</span>
                 </button>
                 {showSummary && !isRecording && (
                   <>
@@ -719,10 +719,10 @@ export default function Home() {
                       }`}
                       title={
                         summaryStatus === 'processing'
-                          ? 'Generating summary...'
+                          ? 'Zusammenfassung wird erstellt...'
                           : transcripts.length === 0
-                          ? 'No transcript available'
-                          : 'Generate AI Summary'
+                          ? 'Kein Transkript verfügbar'
+                          : 'KI-Zusammenfassung erstellen'
                       }
                     >
                       {summaryStatus === 'processing' ? (
@@ -731,21 +731,21 @@ export default function Home() {
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                           </svg>
-                          <span className="text-sm">Processing...</span>
+                          <span className="text-sm">Verarbeitung...</span>
                         </>
                       ) : (
                         <>
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
                           </svg>
-                          <span className="text-sm">Generate Note</span>
+                          <span className="text-sm">Notiz erstellen</span>
                         </>
                       )}
                     </button>
                     <button
                       onClick={() => setShowModelSettings(true)}
                       className="px-3 py-2 border rounded-md transition-all duration-200 inline-flex items-center gap-2 shadow-sm bg-gray-50 border-gray-200 text-gray-700 hover:bg-gray-100 hover:border-gray-300 active:bg-gray-200"
-                      title="Model Settings"
+                      title="Modell-Einstellungen"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -781,7 +781,7 @@ export default function Home() {
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
               <div className="bg-white rounded-lg p-6 max-w-md w-full mx-4 shadow-xl">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-lg font-semibold text-gray-900">Model Settings</h3>
+                  <h3 className="text-lg font-semibold text-gray-900">Modell-Einstellungen</h3>
                   <button
                     onClick={() => setShowModelSettings(false)}
                     className="text-gray-500 hover:text-gray-700"
@@ -795,7 +795,7 @@ export default function Home() {
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Summarization Model
+                      Zusammenfassungsmodell
                     </label>
                     <div className="flex space-x-2">
                       <select
@@ -830,7 +830,7 @@ export default function Home() {
                   </div>
                   {modelConfig.provider === 'ollama' && (
                     <div>
-                      <h4 className="text-lg font-bold mb-4">Available Ollama Models</h4>
+                      <h4 className="text-lg font-bold mb-4">Verfügbare Ollama-Modelle</h4>
                       {error && (
                         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
                           {error}
@@ -860,7 +860,7 @@ export default function Home() {
                     onClick={() => setShowModelSettings(false)}
                     className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
                   >
-                    Done
+                    Fertig
                   </button>
                 </div>
               </div>
@@ -874,17 +874,17 @@ export default function Home() {
             <div className="flex items-center justify-center h-full">
               <div className="text-center">
                 <div className="inline-block animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mb-4"></div>
-                <p className="text-gray-600">Generating AI Summary...</p>
+                <p className="text-gray-600">KI-Zusammenfassung wird erstellt...</p>
               </div>
             </div>
           ) : showSummary && (
             <div className="max-w-4xl mx-auto p-6">
               {summaryResponse && (
                 <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg p-4 max-h-1/3 overflow-y-auto">
-                  <h3 className="text-lg font-semibold mb-2">Meeting Summary</h3>
+                  <h3 className="text-lg font-semibold mb-2">Besprechungszusammenfassung</h3>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="bg-white p-4 rounded-lg shadow-sm">
-                      <h4 className="font-medium mb-1">Key Points</h4>
+                      <h4 className="font-medium mb-1">Wichtigste Punkte</h4>
                       <ul className="list-disc pl-4">
                         {summaryResponse.summary.key_points.blocks.map((block, i) => (
                           <li key={i} className="text-sm">{block.content}</li>
@@ -892,7 +892,7 @@ export default function Home() {
                       </ul>
                     </div>
                     <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
-                      <h4 className="font-medium mb-1">Action Items</h4>
+                      <h4 className="font-medium mb-1">Nächste Schritte</h4>
                       <ul className="list-disc pl-4">
                         {summaryResponse.summary.action_items.blocks.map((block, i) => (
                           <li key={i} className="text-sm">{block.content}</li>
@@ -900,7 +900,7 @@ export default function Home() {
                       </ul>
                     </div>
                     <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
-                      <h4 className="font-medium mb-1">Decisions</h4>
+                      <h4 className="font-medium mb-1">Entscheidungen</h4>
                       <ul className="list-disc pl-4">
                         {summaryResponse.summary.decisions.blocks.map((block, i) => (
                           <li key={i} className="text-sm">{block.content}</li>
@@ -908,7 +908,7 @@ export default function Home() {
                       </ul>
                     </div>
                     <div className="bg-white p-4 rounded-lg shadow-sm mt-4">
-                      <h4 className="font-medium mb-1">Main Topics</h4>
+                      <h4 className="font-medium mb-1">Hauptthemen</h4>
                       <ul className="list-disc pl-4">
                         {summaryResponse.summary.main_topics.blocks.map((block, i) => (
                           <li key={i} className="text-sm">{block.content}</li>
@@ -918,7 +918,7 @@ export default function Home() {
                   </div>
                   {summaryResponse.raw_summary ? (
                     <div className="mt-4">
-                      <h4 className="font-medium mb-1">Full Summary</h4>
+                      <h4 className="font-medium mb-1">Vollständige Zusammenfassung</h4>
                       <p className="text-sm whitespace-pre-wrap">{summaryResponse.raw_summary}</p>
                     </div>
                   ) : null}

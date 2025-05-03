@@ -30,34 +30,34 @@ const MeetingPage = ({ params }: PageProps) => {
   // This would normally come from your database
   const sampleData: Record<string, Meeting> = {
     'team-sync-dec-26': {
-      title: 'Team Sync - Dec 26',
+      title: 'Gespräch mit Frau Müller',
       date: '2024-12-26',
       time: '10:00 AM - 11:00 AM',
-      attendees: ['John Doe', 'Jane Smith', 'Mike Johnson'],
-      tags: ['Team Sync', 'Weekly', 'Product'],
+      attendees: ['Kundenberater: Max Migros', 'Maxina Musterfrau'],
+      tags: ['Kundengespräch', 'Zahlen & Sparen', 'Kreditkarte'],
       content: `
-# Meeting Summary
-Team sync discussion about Q1 2024 goals and current project status.
+# Thema des Gesprächs
+Zusammenfassung des Bankgesprächs über das Bankkonto und die neue Kreditkarte.
 
 ## Agenda Items
-1. Project Status Updates
-2. Q1 2024 Planning
-3. Team Concerns & Feedback
+1. Überprüfung des Bankkontos
+2. Antrag auf neue Kreditkarte
+3. Konditionen und Angebote
 
-## Key Decisions
-- Prioritized mobile app development for Q1
-- Scheduled weekly design reviews
-- Added two new features to the roadmap
+## Key Takeaways
+- Kontoauszüge wurden analysiert.
+- Kreditkartenantrag wurde genehmigt.
+- Konditionen für die Kreditkarte festgelegt.
 
-## Action Items
-- [ ] John: Create project timeline
-- [ ] Jane: Schedule design review meetings
-- [ ] Mike: Update documentation
+## Nächste Schritte
+- [ ] Frau Müller: Kontoauszüge vorbereiten.
+- [ ] Herr Schmidt: Kreditkartenantrag abschließen.
+- [ ] Herr Meier: Konditionen finalisieren.
 
-## Notes
-- Discussed current project bottlenecks
-- Reviewed customer feedback from last release
-- Planned resource allocation for upcoming sprint
+## Notizen
+- Aktuelle Kontostände wurden besprochen.
+- Verschiedene Kreditkartenmodelle geprüft.
+- Weiteres Follow-up zu Konditionsdetails geplant.
       `
     },
     'product-review': {

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown, ChevronRight, File, Settings, ChevronLeftCircle, ChevronRightCircle, Calendar, StickyNote } from 'lucide-react';
+import { ChevronDown, ChevronRight, File, Settings, ChevronLeftCircle, ChevronRightCircle, Calendar, StickyNote, BarChart } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useSidebar } from './SidebarProvider';
 
@@ -10,6 +10,7 @@ interface SidebarItem {
   title: string;
   type: 'folder' | 'file';
   children?: SidebarItem[];
+  route?: string;
 }
 
 const Sidebar: React.FC = () => {
@@ -38,7 +39,7 @@ const Sidebar: React.FC = () => {
             toggleFolder('meetings');
           }}
           className="p-2 hover:bg-gray-100 rounded-md transition-colors"
-          title="Meetings"
+          title="Gespräche"
         >
           <Calendar className="w-5 h-5 text-gray-600" />
         </button>
@@ -48,9 +49,19 @@ const Sidebar: React.FC = () => {
             toggleFolder('notes');
           }}
           className="p-2 hover:bg-gray-100 rounded-md transition-colors"
-          title="Notes"
+          title="Notizen"
         >
           <StickyNote className="w-5 h-5 text-gray-600" />
+        </button>
+        <button
+          onClick={() => {
+            if (isCollapsed) toggleCollapse();
+            toggleFolder('analytics');
+          }}
+          className="p-2 hover:bg-gray-100 rounded-md transition-colors"
+          title="Analytik"
+        >
+          <BarChart className="w-5 h-5 text-gray-600" />
         </button>
       </div>
     );
@@ -70,6 +81,8 @@ const Sidebar: React.FC = () => {
           onClick={() => {
             if (item.type === 'folder') {
               toggleFolder(item.id);
+            } else if (item.route) {
+              router.push(item.route);
             } else {
               const basePath = item.id.startsWith('intro-call') ? '/' : `/${item.id.includes('-') ? 'meetings' : 'notes'}/${item.id}`;
               router.push(basePath);
@@ -82,6 +95,8 @@ const Sidebar: React.FC = () => {
                 <Calendar className="w-4 h-4 mr-2" />
               ) : item.id === 'notes' ? (
                 <StickyNote className="w-4 h-4 mr-2" />
+              ) : item.id === 'analytics' ? (
+                <BarChart className="w-4 h-4 mr-2" />
               ) : null}
               {isExpanded ? (
                 <ChevronDown className="w-4 h-4 mr-1" />
@@ -134,7 +149,12 @@ const Sidebar: React.FC = () => {
           {/* Title container */}
           <div className="flex-1">
             {!isCollapsed && (
-              <h1 className="font-semibold text-sm">Meeting Minutes</h1>
+              <div className="px-2">
+                <h1 className="text-2xl font-extrabold tracking-wider bg-gradient-to-r from-orange-500 via-red-500 to-pink-600 bg-clip-text text-transparent relative">
+                  MIGENIUS
+                  <div className="absolute -bottom-1 left-0 w-8 h-0.5 bg-orange-500"></div>
+                </h1>
+              </div>
             )}
           </div>
         </div>
@@ -153,7 +173,7 @@ const Sidebar: React.FC = () => {
               className="w-full flex items-center px-3 py-2 text-sm text-gray-600 hover:bg-gray-100 rounded-md transition-colors"
             >
               <Settings className="w-4 h-4 mr-3" />
-              <span>Settings</span>
+              <span>Einstellungen</span>
             </button>
           </div>
         )}

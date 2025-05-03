@@ -294,7 +294,7 @@ class MeetingSummarizer:
             ClosingRemarks=self.ClosingRemarks
         )
 
-SYSTEM_PROMPT = """You are a meeting summarizer agent. Your task is to:
+SYSTEM_PROMPT = """You are a german meeting summarizer agent. Your task is to:
 
 1. EXTRACT INFORMATION
 - Use query_transcript to get information about the meeting

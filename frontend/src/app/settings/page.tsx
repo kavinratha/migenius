@@ -9,29 +9,29 @@ export default function SettingsPage() {
 
   const settingsSections = [
     {
-      title: 'Account',
+      title: 'Konto',
       icon: <User className="w-5 h-5" />,
-      items: ['Profile', 'Email', 'Password']
+      items: ['Profil', 'E-Mail', 'Passwort']
     },
     {
-      title: 'Notifications',
+      title: 'Benachrichtigungen',
       icon: <Bell className="w-5 h-5" />,
-      items: ['Email Notifications', 'Push Notifications', 'Meeting Reminders']
+      items: ['E-Mail-Benachrichtigungen', 'Push-Benachrichtigungen', 'Gesprächserinnerungen']
     },
     {
-      title: 'Privacy',
+      title: 'Datenschutz',
       icon: <Lock className="w-5 h-5" />,
-      items: ['Data Sharing', 'Meeting Access', 'Recording Settings']
+      items: ['Datenaustausch', 'Gesprächszugriff', 'Aufnahmeeinstellungen']
     },
     {
-      title: 'Storage',
+      title: 'Speicher',
       icon: <Database className="w-5 h-5" />,
-      items: ['Storage Usage', 'Auto-delete Settings', 'Backup']
+      items: ['Speichernutzung', 'Auto-Lösch-Einstellungen', 'Sicherung']
     },
     {
-      title: 'Appearance',
+      title: 'Darstellung',
       icon: <Palette className="w-5 h-5" />,
-      items: ['Theme', 'Font Size', 'Language']
+      items: ['Design', 'Schriftgröße', 'Sprache']
     }
   ];
 
@@ -43,9 +43,9 @@ export default function SettingsPage() {
           className="flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
         >
           <ArrowLeft className="w-5 h-5" />
-          <span>Back</span>
+          <span>Zurück</span>
         </button>
-        <h1 className="text-3xl font-bold">Settings</h1>
+        <h1 className="text-3xl font-bold">Einstellungen</h1>
       </div>
       
       <div className="space-y-8">
@@ -59,7 +59,7 @@ export default function SettingsPage() {
               {section.items.map((item) => (
                 <div key={item} className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-md cursor-pointer">
                   <span>{item}</span>
-                  <button className="text-blue-600 hover:text-blue-800">Configure</button>
+                  <button className="text-blue-600 hover:text-blue-800">Konfigurieren</button>
                 </div>
               ))}
             </div>

@@ -565,10 +565,10 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
     <div className="w-full p-4 bg-red-50 border border-red-200 rounded-lg">
       <div className="flex items-center mb-2">
         <ExclamationTriangleIcon className="h-5 w-5 text-red-500 mr-2" />
-        <h3 className="text-red-700 font-medium">Error Generating Summary</h3>
+        <h3 className="text-red-700 font-medium">Fehler beim Erstellen der Zusammenfassung</h3>
       </div>
       <p className="text-red-600 text-sm">{error}</p>
-      <p className="text-red-500 text-xs mt-2">Please try again or contact support if the issue persists.</p>
+      <p className="text-red-500 text-xs mt-2">Bitte versuchen Sie es erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.</p>
     </div>
   );
 
@@ -578,12 +578,12 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
         <div className="animate-spin rounded-full h-5 w-5 border-2 border-blue-500 border-t-transparent"></div>
         <div>
           <h3 className="text-blue-700 font-medium">
-            {status === 'processing' ? 'Processing Transcript' : 'Generating Summary'}
+            {status === 'processing' ? 'Transkript wird verarbeitet' : 'Zusammenfassung wird erstellt'}
           </h3>
           <p className="text-blue-600 text-sm">
             {status === 'processing' 
-              ? 'Analyzing your transcript...' 
-              : 'Creating a detailed summary of your meeting...'}
+              ? 'Analysieren des Transkripts...' 
+              : 'Erstellung einer detaillierten Zusammenfassung des Meetings...'}
           </p>
         </div>
       </div>
@@ -591,7 +591,19 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
   );
 
   if (error) {
-    return renderErrorState();
+    return (
+      <div className="p-4 text-red-500">
+        {error === 'no_transcript' ? 'Kein Transkript gefunden' : 'Ein Fehler ist aufgetreten'}
+      </div>
+    );
+  }
+
+  if (!summary) {
+    return (
+      <div className="p-4 text-gray-500">
+        Keine Zusammenfassung verfügbar
+      </div>
+    );
   }
 
   if (status === 'processing' || status === 'summarizing' || status === 'regenerating') {
@@ -603,8 +615,8 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
   if (!hasContent && status === 'completed') {
     return (
       <div className="w-full p-4 bg-gray-50 border border-gray-200 rounded-lg text-center">
-        <p className="text-gray-600">No summary content available.</p>
-        <p className="text-gray-500 text-sm mt-1">Try generating a new summary.</p>
+        <p className="text-gray-600">Keine Zusammenfassung verfügbar.</p>
+        <p className="text-gray-500 text-sm mt-1">Versuchen Sie, eine neue Zusammenfassung zu erstellen.</p>
       </div>
     );
   }
@@ -702,14 +714,14 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
             onClick={handleCopyBlocks}
           >
             <span className="text-gray-600">📋</span>
-            <span>Copy {selectedBlocks.length > 1 ? `${selectedBlocks.length} blocks` : 'block'}</span>
+            <span>Kopieren {selectedBlocks.length > 1 ? `${selectedBlocks.length} Blöcke` : 'Block'}</span>
           </button>
           <button
             className="w-full px-4 py-2 text-left hover:bg-gray-100 text-red-600 flex items-center space-x-2"
             onClick={handleDeleteBlocks}
           >
             <span>🗑️</span>
-            <span>Delete {selectedBlocks.length > 1 ? `${selectedBlocks.length} blocks` : 'block'}</span>
+            <span>Löschen {selectedBlocks.length > 1 ? `${selectedBlocks.length} Blöcke` : 'Block'}</span>
           </button>
         </div>
       )}
@@ -717,7 +729,7 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
       <div className="flex items-center space-x-2 mb-6">
         <span className="text-2xl">✨</span>
         <h2 className="text-2xl font-semibold bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
-          AI Enhanced Summary
+          KI-Erweiterte Zusammenfassung
         </h2>
         <div className="ml-auto flex space-x-2">
           <button
@@ -728,24 +740,17 @@ export const AISummary = ({ summary, status, error, onSummaryChange, onRegenerat
             className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-md flex items-center space-x-1"
           >
             <span>📋</span>
-            <span>Copy as Markdown</span>
+            <span>Als Markdown kopieren</span>
           </button>
-          {/* <button
-            onClick={handleExport}
-            className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-md flex items-center space-x-1"
-          >
-            <span>📝</span>
-            <span>Export as Markdown</span>
-          </button> */}
           <button
             onClick={onRegenerateSummary}
             className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded-md flex items-center space-x-1"
-            title="Regenerate Summary"
+            title="Zusammenfassung neu erstellen"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
             </svg>
-            <span className="ml-1">Regenerate</span>
+            <span className="ml-1">Neu erstellen</span>
           </button>
         </div>
       </div>

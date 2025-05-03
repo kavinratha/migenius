@@ -3,7 +3,8 @@
 # Default configuration
 HOST="127.0.0.1"
 PORT="8178"
-MODEL="models/ggml-large-v3.bin"
+MODEL="models/ggml-small.bin"
+LANGUAGE="de"  
 
 # Parse command line arguments
 while [[ $# -gt 0 ]]; do
@@ -20,6 +21,8 @@ while [[ $# -gt 0 ]]; do
             MODEL="$2"
             shift 2
             ;;
+        # Der Sprachparameter wird nicht mehr aus der Befehlszeile übernommen,
+        # sodass LANGUAGE immer auf "de" bleibt.
         *)
             echo "Unknown option: $1"
             exit 1
@@ -32,6 +35,6 @@ done
     --model "$MODEL" \
     --host "$HOST" \
     --port "$PORT" \
+    -l "$LANGUAGE" \
     --diarize \
     --print-progress
-
