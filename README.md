@@ -73,7 +73,9 @@ Dieser Prototyp implementiert folgende Kernfunktionen:
 
 ### Architekturdiagramm
 
-<img width="891" alt="Screenshot 2025-05-17 at 15 45 54" src="https://github.com/user-attachments/assets/8997350d-bdc5-480e-a832-9e8eb0f6e108" />
+<img width="1425" alt="Screenshot 2025-05-17 at 15 48 43" src="https://github.com/user-attachments/assets/9a099fc9-2653-4c6a-895c-fef64cc975aa" />
+
+
 Das Architekturdiagramm visualisiert vereinfacht und modular die zentralen Verarbeitungsschritte: Audioaufnahme → Transkription mit Whisper → Generierung der Zusammenfassung durch ein LLM → Ausgabe.
 
 ### Laufende Arbeiten & Nächste Schritte
