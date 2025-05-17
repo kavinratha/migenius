@@ -151,7 +151,9 @@ chmod +x build_whisper.sh
 # On Windows:
 .\start_with_output.ps1
 ```
+## Benutzerhandbuch
 
+Hier Benutzerhandbuch mit Screenshots von Kavin.
 
 ## Basierend auf Meetily (Original Projektinformation)
 
