@@ -71,6 +71,11 @@ Dieser Prototyp implementiert folgende Kernfunktionen:
     *   ⚠️ **Hinweis:** Die Zusammenfassung erfolgt aktuell über eine **API (Cloud)**, da die benötigte Rechenleistung für grosse Modelle auf lokalen Geräten oft nicht ausreicht. Eine Ausführung auf einer **Private Cloud** wäre alternativ möglich.
 *   ✅ **Plattformunterstützung:** Läuft unter macOS und Windows.
 
+### Architekturdiagramm
+
+<img width="891" alt="Screenshot 2025-05-17 at 15 45 54" src="https://github.com/user-attachments/assets/8997350d-bdc5-480e-a832-9e8eb0f6e108" />
+Das Architekturdiagramm visualisiert vereinfacht und modular die zentralen Verarbeitungsschritte: Audioaufnahme → Transkription mit Whisper → Generierung der Zusammenfassung durch ein LLM → Ausgabe.
+
 ### Laufende Arbeiten & Nächste Schritte
 
 *   🚧 **Sprecherunterscheidung (Speaker Diarization):** Aktive Entwicklung zur automatischen Identifizierung verschiedener Sprecher im Transkript.
