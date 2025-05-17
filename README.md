@@ -139,8 +139,7 @@ chmod +x build_whisper.sh
 
 # On Windows:
 .\start_with_output.ps1
-
-
+```
 
 
 ## Basierend auf Meetily (Original Projektinformation)
