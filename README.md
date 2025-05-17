@@ -78,10 +78,14 @@ Dieser Prototyp implementiert folgende Kernfunktionen:
 
 Das Architekturdiagramm visualisiert vereinfacht und modular die zentralen Verarbeitungsschritte: Audioaufnahme → Transkription mit Whisper → Generierung der Zusammenfassung durch ein LLM → Ausgabe.
 
-### Laufende Arbeiten & Nächste Schritte
+### Limitationen: Laufende Arbeiten & Nächste Schritte
 
 *   🚧 **Sprecherunterscheidung (Speaker Diarization):** Aktive Entwicklung zur automatischen Identifizierung verschiedener Sprecher im Transkript.
 *   🚧 **Export-Funktionen:** Hinzufügen von Exportoptionen für Transkripte und Zusammenfassungen (z.B. Markdown, PDF).
+*   🚧 **Schweizerdeutsche Unterstützung:** Schwächen bei Dialekten sind auf das fehlen grosser Modelle für Schweizerdeutsch zurückzuführen. deshalb müsste in grossen Stil Trainingsdaten gesammelt und gelabelt werden.
+*   🚧 **Rand-Cases:** Begrenzte Modellgenauigkeit bei kurzen, chaotischen oder inhaltsarmen Audios.
+*   🚧 **Hoher Rechenaufwand:** Hoher Ressourcenbedarf bei LLM-Zusammenfassungen auf lokalen Geräten erfordert entweder Private-Cloud oder sehr leistungsfähige persönliche Ausrüstung.
+*   🚧 **Model-Einschränkungen:** Nicht immer exakte Erkennung bei Speaker-Überlappung, Hintergrundgeräuschen, etc. suggerieren künftige Benutzung eines leistungsfäherigen Models.
 *   Weitere Verbesserungen basierend auf dem ursprünglichen Projekt (siehe unten).
 
 ## Set Up
