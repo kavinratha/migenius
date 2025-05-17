@@ -172,6 +172,21 @@ Data Canvas
 Business Case
 Bild
 
+
+
+
+
+
+
+##----------------------------------------------#
+
+
+
+
+
+
+
+
 ## Basierend auf Meetily (Original Projektinformation)
 
 Die folgenden Abschnitte beschreiben die Architektur, Features und Setup-Anweisungen des ursprünglichen "Meetily"-Projekts, auf dem diese Arbeit basiert.
