@@ -77,6 +77,72 @@ Dieser Prototyp implementiert folgende Kernfunktionen:
 *   🚧 **Export-Funktionen:** Hinzufügen von Exportoptionen für Transkripte und Zusammenfassungen (z.B. Markdown, PDF).
 *   Weitere Verbesserungen basierend auf dem ursprünglichen Projekt (siehe unten).
 
+## Set Up
+
+Analog zum originalen Projekt:
+
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Give execute permissions to clean_build.sh
+chmod +x clean_build.sh
+
+# run clean_build.sh
+./clean_build.sh
+```
+
+### 2. Backend Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/Zackriya-Solutions/meeting-minutes.git
+cd meeting-minutes/backend
+
+# Create and activate virtual environment
+# On macOS/Linux:
+python -m venv venv
+source venv/bin/activate
+
+# On Windows:
+python -m venv venv
+.\venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Add environment file with API keys
+# On macOS/Linux:
+echo -e "OPENAI_API_KEY=your_api_key" | tee .env
+
+# On Windows (PowerShell):
+"OPENAI_API_KEY=your_api_key" | Out-File -FilePath .env -Encoding utf8
+
+# Configure environment variables for Groq
+# On macOS/Linux:
+export OPENAI_API_KEY=your_openai_api_key
+
+# On Windows (PowerShell):
+$env:OPENAI_API_KEY="your_openai_api_key"
+
+# Build dependencies
+# On macOS/Linux:
+chmod +x build_whisper.sh
+./build_whisper.sh
+
+# On Windows:
+.\build_whisper.bat
+
+# Start backend servers
+# On macOS/Linux:
+./clean_start_backend.sh
+
+# On Windows:
+.\start_with_output.ps1
+
+
+
+
 ## Basierend auf Meetily (Original Projektinformation)
 
 Die folgenden Abschnitte beschreiben die Architektur, Features und Setup-Anweisungen des ursprünglichen "Meetily"-Projekts, auf dem diese Arbeit basiert.
