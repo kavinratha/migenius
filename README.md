@@ -73,11 +73,16 @@ Dieser Prototyp implementiert folgende Kernfunktionen:
 
 ### Architekturdiagramm
 
+Die beiden Diagramme solen für non-tech und tech Stakeholder den grundlegenden Aufbau von Migenius veranschaulichen.
+
 <img width="1425" alt="Screenshot 2025-05-17 at 15 48 43" src="https://github.com/user-attachments/assets/9a099fc9-2653-4c6a-895c-fef64cc975aa" />
 
 
 Das Architekturdiagramm visualisiert vereinfacht und modular die zentralen Verarbeitungsschritte: Audioaufnahme → Transkription mit Whisper → Generierung der Zusammenfassung durch ein LLM → Ausgabe.
+<img width="1039" alt="Architekur_Detail png" src="https://github.com/user-attachments/assets/c01f341d-70a4-4c16-9371-94d5fe440355" />
 
+
+Dieses Diagramm legt den Fouks auf eine Detaillierte Ansicht bezüglich den verwendeten Diensten.
 ### Limitationen: Laufende Arbeiten & Nächste Schritte
 
 *   🚧 **Sprecherunterscheidung (Speaker Diarization):** Aktive Entwicklung zur automatischen Identifizierung verschiedener Sprecher im Transkript.
