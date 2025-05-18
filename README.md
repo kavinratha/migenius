@@ -162,19 +162,25 @@ Hier Benutzerhandbuch mit Screenshots von Kavin.
 
 ## Weitere Artefakte
 
-Stakeholder-Analyse
+## The time is now
+<img width="1072" alt="Screenshot 2025-05-18 at 18 43 09" src="https://github.com/user-attachments/assets/960e31e6-e4e3-44bb-9f89-9e3ee4c4edfd" />
+
+## Probleme gibts an folgenden Stellen
+<img width="1042" alt="Screenshot 2025-05-18 at 18 45 49" src="https://github.com/user-attachments/assets/e2412e25-972e-4290-8516-c59b4ffb7365" />
+
+
+## Stakeholder-Analyse
 Bild
 
-User Journey Map
 > **Value Proposition Canvas**
 <img width="1431" alt="Screenshot 2025-05-17 at 16 06 42" src="https://github.com/user-attachments/assets/a8ca0881-6629-4bad-ad61-443c43d0693c" />
 <img width="1417" alt="Screenshot 2025-05-17 at 16 07 34" src="https://github.com/user-attachments/assets/a53238b8-5451-4bdd-849c-e1f4e536d9e2" />
 <img width="1416" alt="Screenshot 2025-05-17 at 16 07 57" src="https://github.com/user-attachments/assets/93c2422f-2265-4fff-a449-a824283f71f0" />
 
-Data Canvas
+## Data Canvas
 <img width="1440" alt="Screenshot 2025-05-17 at 16 09 16" src="https://github.com/user-attachments/assets/e7205705-da29-45ba-b44f-0d974436c1ee" />
 
-Business Case
+## Business Case
 Bild
 
 ## Projektplanung und Roadmap
