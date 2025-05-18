@@ -175,7 +175,7 @@ Bild
 ## Projektplanung und Roadmap
 <img width="1418" alt="Screenshot 2025-05-17 at 17 48 33" src="https://github.com/user-attachments/assets/e39324b4-8ada-4fc2-a893-6b5083bc16c6" />
 
-Der intiale Plan wurde entlang des Projektes kontinuirlich angepasst, jedoch blieben Anforderungen von der Migros bank als auch aus dem universitären Rahmen ausschlaggebend.
+Der intiale Plan wurde entlang des Projektes kontinuirlich angepasst, jedoch blieben Anforderungen von der Migros Bank als auch aus dem universitären Rahmen ausschlaggebend.
 
 
 
