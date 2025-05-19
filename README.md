@@ -95,7 +95,7 @@ Dieses Diagramm legt den Fouks auf eine Detaillierte Ansicht bezüglich den verw
 
 ## Set Up
 
-Analog zum originalen Projekt:
+Analog zum originalen Projekt, i.c. mit OpenAI:
 
 ```bash
 # Navigate to frontend directory
