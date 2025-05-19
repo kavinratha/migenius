@@ -177,6 +177,18 @@ Schnelle und fundierte Entscheidungen gefällig? Nutze die Summarizations aus de
 
 <img width="1471" alt="Screenshot 2025-05-19 at 17 48 32" src="https://github.com/user-attachments/assets/b3973901-5fcf-4687-a995-e7e2f6a52174" />
 
+Mehr Insights notwendig? Unter **Analytik** siehst du alles, was du zum Arbeiten brauchst - aus sowohl vorgangenen Gesprächen, als auch deine künftigen Termin.
+
+<img width="1473" alt="Screenshot 2025-05-19 at 17 50 59" src="https://github.com/user-attachments/assets/62b9ae85-faca-49e9-a083-9c04ae488694" />
+
+Zudem erhähltst du in deinem Dashboard einen schnellen grundlegenden Überblick, sowie konkrete Gesprächs-, Produkt- und Themenanalysen. Alle Infos auf einen Blick - weil deine Zeit wertvoll ist.
+
+<img width="1474" alt="Screenshot 2025-05-19 at 17 52 37" src="https://github.com/user-attachments/assets/789fa0ee-d94b-4021-810b-95e271cd55a5" />
+<img width="1466" alt="Screenshot 2025-05-19 at 17 52 54" src="https://github.com/user-attachments/assets/3318954c-6a51-4397-819d-535f824b83d4" />
+<img width="1456" alt="Screenshot 2025-05-19 at 17 54 42" src="https://github.com/user-attachments/assets/c25cfcfb-7731-47c8-96bc-2457bca97802" />
+<img width="1461" alt="Screenshot 2025-05-19 at 17 55 14" src="https://github.com/user-attachments/assets/c33da95c-1b78-4c0f-97e3-e9f9c5e06502" />
+
+
 
 ## Weitere Artefakte
 
