@@ -158,7 +158,20 @@ chmod +x build_whisper.sh
 ```
 ## Benutzerhandbuch
 
-Hier Benutzerhandbuch mit Screenshots von Kavin.
+
+
+Starte die **Transkription** einer neue Aufnahme, indem du auf den Aufnahme-Button drückst.
+<img width="1477" alt="Screenshot 2025-05-19 at 17 41 39" src="https://github.com/user-attachments/assets/b81c3766-def3-4154-96cc-758cf47b0df1" />
+
+Danach beginnt MiGenius, das Gespräch zu transkribieren.
+<img width="1474" alt="Screenshot 2025-05-19 at 17 43 56" src="https://github.com/user-attachments/assets/c733f1b6-dfec-4167-904d-fa488610d3d9" />
+
+Wähle ein Sprachmodell zur **Summarization** aus.
+<img width="1470" alt="Screenshot 2025-05-19 at 17 44 46" src="https://github.com/user-attachments/assets/fb0211c2-f490-4f04-810f-feb7e374cb66" />
+
+Verwenden die generierten Insights und die gesparte Zeit, um dich dem zu widmen, was wirklich zählt!
+<img width="1483" alt="Screenshot 2025-05-19 at 17 45 36" src="https://github.com/user-attachments/assets/a5c6c5cb-516d-4316-af98-eb48fa7062cd" />
+
 
 ## Weitere Artefakte
 
