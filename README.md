@@ -188,8 +188,16 @@ Bild
 
 Der intiale Plan wurde entlang des Projektes kontinuirlich angepasst, jedoch blieben Anforderungen von der Migros Bank als auch aus dem universitären Rahmen ausschlaggebend.
 
+<img width="1136" alt="Screenshot 2025-05-19 at 07 21 50" src="https://github.com/user-attachments/assets/10b0fdd3-3fe1-473f-9d9b-73f6cea555c0" />
 
 
+## Gap Analyse
+
+
+<img width="1127" alt="Screenshot 2025-05-19 at 07 22 05" src="https://github.com/user-attachments/assets/a0b65f30-6c8c-4a5f-b5cf-4f15b898ab86" />
+
+
+<img width="1126" alt="Screenshot 2025-05-19 at 07 22 20" src="https://github.com/user-attachments/assets/636e39a0-ebc7-44df-9c1d-266677f2959c" />
 
 
 
