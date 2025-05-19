@@ -181,7 +181,8 @@ Bild
 <img width="1440" alt="Screenshot 2025-05-17 at 16 09 16" src="https://github.com/user-attachments/assets/e7205705-da29-45ba-b44f-0d974436c1ee" />
 
 ## Business Case
-Bild
+<img width="1388" alt="Screenshot 2025-05-19 at 11 53 53" src="https://github.com/user-attachments/assets/942a62a5-26e2-46a4-ae18-262a0c21a33e" />
+
 
 ## Projektplanung und Roadmap
 <img width="1418" alt="Screenshot 2025-05-17 at 17 48 33" src="https://github.com/user-attachments/assets/e39324b4-8ada-4fc2-a893-6b5083bc16c6" />
@@ -189,6 +190,9 @@ Bild
 Der intiale Plan wurde entlang des Projektes kontinuirlich angepasst, jedoch blieben Anforderungen von der Migros Bank als auch aus dem universitären Rahmen ausschlaggebend.
 
 <img width="1136" alt="Screenshot 2025-05-19 at 07 21 50" src="https://github.com/user-attachments/assets/10b0fdd3-3fe1-473f-9d9b-73f6cea555c0" />
+
+Der Zeitplan lässt sich damit wie folgt darstellen:
+<img width="1404" alt="Screenshot 2025-05-19 at 11 54 15" src="https://github.com/user-attachments/assets/27ec58e3-0c7a-4c0e-8aeb-db1dc983b9b0" />
 
 
 ## Gap Analyse
