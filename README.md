@@ -172,6 +172,11 @@ Wähle ein Sprachmodell zur **Summarization** aus.
 Verwenden die generierten Insights und die gesparte Zeit, um dich dem zu widmen, was wirklich zählt!
 <img width="1483" alt="Screenshot 2025-05-19 at 17 45 36" src="https://github.com/user-attachments/assets/a5c6c5cb-516d-4316-af98-eb48fa7062cd" />
 
+Schnelle und fundierte Entscheidungen gefällig? Nutze die Summarizations aus der Konversationshistorie und deinen persönlichen Notizen!
+<img width="1459" alt="Screenshot 2025-05-19 at 17 46 54" src="https://github.com/user-attachments/assets/6d6fcc28-9ec6-488f-880f-f7a71299d018" />
+
+<img width="1471" alt="Screenshot 2025-05-19 at 17 48 32" src="https://github.com/user-attachments/assets/b3973901-5fcf-4687-a995-e7e2f6a52174" />
+
 
 ## Weitere Artefakte
 
