@@ -189,7 +189,8 @@ Bild
 
 Der intiale Plan wurde entlang des Projektes kontinuirlich angepasst, jedoch blieben Anforderungen von der Migros Bank als auch aus dem universitären Rahmen ausschlaggebend.
 
-<img width="1136" alt="Screenshot 2025-05-19 at 07 21 50" src="https://github.com/user-attachments/assets/10b0fdd3-3fe1-473f-9d9b-73f6cea555c0" />
+<img width="1410" alt="Screenshot 2025-05-19 at 17 06 11" src="https://github.com/user-attachments/assets/1c6c1734-0867-48cb-ba8a-74bdb47eca49" />
+
 
 Der Zeitplan lässt sich damit wie folgt darstellen:
 <img width="1404" alt="Screenshot 2025-05-19 at 11 54 15" src="https://github.com/user-attachments/assets/27ec58e3-0c7a-4c0e-8aeb-db1dc983b9b0" />
