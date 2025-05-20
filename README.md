@@ -200,7 +200,8 @@ Zudem erhähltst du in deinem Dashboard einen schnellen grundlegenden Überblick
 
 
 ## Stakeholder-Analyse
-Bild
+<img width="1428" alt="Screenshot 2025-05-20 at 20 02 28" src="https://github.com/user-attachments/assets/2e7b26f4-4db5-405b-9a37-10496801d2ab" />
+
 
 > **Value Proposition Canvas**
 <img width="1431" alt="Screenshot 2025-05-17 at 16 06 42" src="https://github.com/user-attachments/assets/a8ca0881-6629-4bad-ad61-443c43d0693c" />
