@@ -229,13 +229,7 @@ Der Zeitplan lässt sich damit wie folgt darstellen:
 
 
 ## Gap Analyse
-
-
-<img width="1127" alt="Screenshot 2025-05-19 at 07 22 05" src="https://github.com/user-attachments/assets/a0b65f30-6c8c-4a5f-b5cf-4f15b898ab86" />
-
-
-<img width="1126" alt="Screenshot 2025-05-19 at 07 22 20" src="https://github.com/user-attachments/assets/636e39a0-ebc7-44df-9c1d-266677f2959c" />
-
+<img width="1408" alt="Screenshot 2025-05-20 at 20 10 13" src="https://github.com/user-attachments/assets/890d43c3-20ba-4770-8b9b-306cac7d3ad2" />
 
 
 
