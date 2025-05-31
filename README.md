@@ -243,21 +243,3 @@ Der Zeitplan lässt sich damit wie folgt darstellen:
 ## Originalprojekt
 
 Dieses Projekt basiert auf [Meetily - AI-Powered Meeting Assistant](https://github.com/Zackriya-Solutions/meeting-minutes) von Zackriya Solutions. Weitere Informationen zum Originalprojekt finden Sie im GitHub-Repository.
-
-## Development Guidelines
-
-- Follow the established project structure
-- Write tests for new features
-- Document API changes
-- Use type hints in Python code
-- Follow ESLint configuration for JavaScript/TypeScript
-
-## Introducing Subscription
-
-We are planning to add a subscription option so that you don't have to run the backend on your own server. This will help you scale better and run the service 24/7. This is based on a few requests we received. If you are interested, please fill out the form [here](http://zackriya.com/aimeeting/).
-
-Last updated: March 3, 2025
-
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=Zackriya-Solutions/meeting-minutes&type=Date)](https://star-history.com/#Zackriya-Solutions/meeting-minutes&Date)
